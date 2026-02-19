@@ -23,7 +23,7 @@ export default function Home() {
           <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-xl flex items-center justify-center text-black">
             <Terminal size={20} />
           </div>
-          <span>DEV.PORTFOLIO</span>
+          <span>HALM PORTAFOLIO</span>
         </motion.div>
         <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
           <a href="#proyectos" className="hover:text-cyan-400 transition-colors">PROYECTOS</a>
