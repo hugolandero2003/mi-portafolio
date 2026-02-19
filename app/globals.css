@@ -9,10 +9,16 @@
 :root {
   --background: #050505;
   --foreground: #ffffff;
+  scroll-behavior: smooth; /* Movimiento elegante entre secciones */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
+}
+
+/* Evita que el Navbar tape el inicio de la sección */
+section {
+  scroll-margin-top: 100px;
 }
