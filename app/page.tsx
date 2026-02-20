@@ -129,18 +129,49 @@ export default function Home() {
         </section>
 
         {/* SECCIÓN 3: HABILIDADES */}
-        <section id="habilidades" className="py-24">
-          <div className="bg-white/5 border border-white/5 rounded-[3rem] p-12 text-center">
-            <h2 className="text-4xl font-black mb-12 italic">TECH_STACK</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {["React", "Node.js", "TypeScript", "Next.js", "PostgreSQL", "Docker", "AWS", "Framer Motion"].map((skill) => (
-                <div key={skill} className="p-6 bg-black/40 rounded-2xl border border-white/5 hover:border-cyan-500/50 transition-colors">
-                  <p className="font-bold text-gray-400">{skill}</p>
+        <section id="habilidades" className="py-24 px-4">
+        <div className="max-w-6xl mx-auto bg-white/5 border border-white/5 rounded-[3rem] p-8 md:p-12 text-center">
+          <h2 className="text-4xl font-black mb-16 italic tracking-tighter text-white uppercase">
+            TECH_STACK
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+            {[
+              { name: "React", level: 90 },
+              { name: "Node.js", level: 85 },
+              { name: "TypeScript", level: 80 },
+              { name: "Next.js", level: 88 },
+              { name: "PostgreSQL", level: 75 },
+              { name: "Docker", level: 70 },
+              { name: "AWS", level: 65 },
+              { name: "Framer Motion", level: 95 },
+            ].map((skill) => (
+              <div key={skill.name} className="space-y-4 text-left group">
+                <div className="flex justify-between items-end px-1">
+                  <span className="font-bold text-gray-200 text-lg group-hover:text-cyan-400 transition-colors">
+                    {skill.name}
+                  </span>
+                  <span className="text-cyan-500 font-mono text-sm font-bold">
+                    {skill.level}%
+                  </span>
                 </div>
-              ))}
-            </div>
+
+          {/* Contenedor de la barra */}
+          <div className="relative h-3 w-full bg-black/40 rounded-full border border-white/5 overflow-hidden">
+            {/* Relleno animado */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: `${skill.level}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="h-full bg-gradient-to-r from-cyan-600 to-blue-500 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.4)]"
+            />
           </div>
-        </section>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
         {/* SECCIÓN 4: CONTACTO */}
         <section id="contacto" className="py-24 text-center">
