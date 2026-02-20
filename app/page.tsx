@@ -5,6 +5,7 @@ import {
   Github, ExternalLink, Terminal, Code2, Sparkles, 
   Cpu, Layers, Mail, Linkedin, ChevronRight 
 } from "lucide-react";
+import Link from 'next/link';
 
 export default function Home() {
   
@@ -84,22 +85,43 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {proyectos.map((p, i) => (
-              <motion.div key={i} whileHover={{ y: -10 }} className="group bg-white/5 border border-white/5 p-8 rounded-[2rem] hover:border-cyan-500/30 transition-all">
-                <div className="flex justify-between mb-8">
-                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-cyan-400">
-                    <Layers size={24} />
+              <motion.div key={i} whileHover={{ y: -10 }} className="group bg-white/5 border border-white/5 p-8 rounded-[2rem] hover:border-cyan-500/30 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex justify-between mb-8">
+                    <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-cyan-400">
+                      <Layers size={24} />
+                    </div>
+                    <div className="flex gap-4 text-gray-500">
+                      <Github size={20} className="hover:text-white cursor-pointer" />
+                      <ExternalLink size={20} className="hover:text-white cursor-pointer" />
+                    </div>
                   </div>
-                  <div className="flex gap-4 text-gray-500">
-                    <Github size={20} className="hover:text-white cursor-pointer" />
-                    <ExternalLink size={20} className="hover:text-white cursor-pointer" />
-                  </div>
+                  <h3 className="text-3xl font-bold mb-4">{p.title}</h3>
+                  <p className="text-gray-400 mb-8">{p.desc}</p>
                 </div>
-                <h3 className="text-3xl font-bold mb-4">{p.title}</h3>
-                <p className="text-gray-400 mb-8">{p.desc}</p>
-                <div className="flex gap-2">
-                  {p.tech.map(t => (
-                    <span key={t} className="px-3 py-1 bg-black rounded-lg border border-white/10 text-[10px] text-gray-500">{t}</span>
-                  ))}
+
+                <div className="flex flex-col gap-6">
+                  <div className="flex gap-2">
+                    {p.tech.map(t => (
+                      <span key={t} className="px-3 py-1 bg-black rounded-lg border border-white/10 text-[10px] text-gray-500">{t}</span>
+                    ))}
+                  </div>
+
+                  {/* ESTA ES LA PARTE CLAVE DEL ENLACE */}
+                 {p.title === "AI Dashboard" ? (
+                    <Link href="/dashboard">
+                      <button className="w-full py-3 bg-cyan-500/10 text-cyan-400 rounded-xl border border-cyan-500/20 hover:bg-cyan-500 hover:text-black transition-all font-bold text-xs tracking-widest">
+                        VER SAAS IA
+                      </button>
+                    </Link>
+                  ) : p.title === "E-Commerce" ? (
+                    <Link href="/ecommerce">
+                      <button className="w-full py-3 bg-purple-500/10 text-purple-400 rounded-xl border border-purple-500/20 hover:bg-purple-500 hover:text-white transition-all font-bold text-xs tracking-widest">
+                        VER TIENDA LUXE
+                      </button>
+                    </Link>
+                  ) : null}
+
                 </div>
               </motion.div>
             ))}
